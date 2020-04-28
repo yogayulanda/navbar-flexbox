@@ -1,0 +1,121 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    overflow-x: hidden;
+}
+
+nav {
+    display: flex;
+    background-color: aqua;
+    justify-content: space-around;
+    height: 50px;
+    color: white;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    width: 20%;
+    justify-content: space-between;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.8em;
+}
+
+/* Hamburger Menu */
+.menu-toogle {
+    display: none;
+    flex-direction: column;
+    height: 20px;
+    justify-content: space-between;
+    position: relative;
+
+}
+
+.menu-toogle span{
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+    transition: all 0.5s;
+
+}
+
+.menu-toogle input {
+    position: absolute;
+    width: 40px;
+    height: 28px;
+    left: -5px;
+    top: -3px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.menu-toogle span:nth-child(2)
+{
+    transform-origin: 0 0;
+}
+
+.menu-toogle span:nth-child(4)
+{
+    transform-origin: 0 100%;
+}
+
+
+/* Hamburger Menu Animasi */
+.menu-toogle input:checked ~ span:nth-child(2){
+    transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.menu-toogle input:checked ~ span:nth-child(4){
+    transform: rotate(-45deg) translate(-1px, 0px);
+}
+
+.menu-toogle input:checked ~ span:nth-child(3){
+    transform: scale(0);
+}
+
+
+/* Responsif Tablet */
+@media screen and (max-width:768px){
+    nav ul {
+        width: 30%;
+    }
+}
+
+/* Ukuran Mobile */
+@media screen and (max-width:576px){
+    nav ul {
+    position: absolute;
+    right: 0;
+    top: 0;
+    flex-direction: column;
+    height: 100vh;
+    background-color: black;
+    align-items: center;
+    justify-content: space-evenly;
+    z-index: -1;
+    width: 80%;
+    transform: translateX(100%);
+    transition: all 1s;
+    opacity: 0;
+    }
+
+    .menu-toogle {
+        display: flex;
+    }
+
+    nav ul.slide {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
